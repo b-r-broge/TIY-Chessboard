@@ -1,0 +1,46 @@
+/*Here is a thing for me to work on*/
+
+.board {
+  display: grid;
+  grid-template-columns: 3em, repeat(8, 1fr), 3em;
+  grid-template-rows: 3em, repeat(8, 1fr), 3em;
+  grid-template-areas:
+    ". topSidebar topSidebar topSidebar topSidebar topSidebar topSidebar topSidebar topSidebar ."
+    "leftSidebar board board board board board board board board rightSidebar "
+    "leftSidebar board board board board board board board board rightSidebar "
+    "leftSidebar board board board board board board board board rightSidebar "
+    "leftSidebar board board board board board board board board rightSidebar "
+    "leftSidebar board board board board board board board board rightSidebar "
+    "leftSidebar board board board board board board board board rightSidebar "
+    "leftSidebar board board board board board board board board rightSidebar "
+    "leftSidebar board board board board board board board board rightSidebar "
+    ". botSidebar botSidebar botSidebar botSidebar botSidebar botSidebar botSidebar botSidebar .";
+}
+
+.tile {
+  grid-area: board;
+}
+
+.lSidebar {
+  grid-area: leftSidebar;
+}
+
+.tSidebar {
+  grid-area: topSidebar;
+}
+
+.rSidebar {
+  grid-area: rightSidebar;
+}
+
+.bSidebar {
+  grid-area: botSidebar
+}
+
+.light {
+  background: #EEE;
+}
+
+.dark {
+  background: #111;
+}
