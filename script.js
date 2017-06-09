@@ -21,11 +21,14 @@ function genBoard() {
   for (let i = 1 ; i <= 8 ; i++) {
     for (let j = 65 ; j <= 72 ; j++) {
       let tile = document.createElement('div');
+      let loc = String.fromCharCode(j).toLowerCase() + i;
       if ((i % 2 === 0 && j % 2 === 1) || (i % 2 === 1 && j % 2 === 0 )) {
-        tile.className = "tile light " + i + String.fromCharCode(j).toLowerCase();
+        tile.className = "tile dark " + loc;
       } else {
-        tile.className = "tile dark " + i + String.fromCharCode(j).toLowerCase();
+        tile.className = "tile light " + loc;
       }
+      // console.log(loc);
+      tile.style.gridArea = loc;
       board.appendChild(tile);
     }
   }
@@ -53,6 +56,14 @@ function genSidebar(isRow) {
   }
 
   return newSidebar;
+}
+
+function populatePieces() {
+  // I need to pull the piece img files and place them in the board grid.
+  // I'll create a div within the tile div and scale the background to fit.
+  // Going to try and have the black pieces be inverted in color
+  // from the white pieces
+  
 }
 
 genBoard();

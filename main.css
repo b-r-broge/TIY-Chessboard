@@ -1,19 +1,33 @@
 /*Here is a thing for me to work on*/
 
+h1 {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
 .board {
   display: grid;
-  grid-template-columns: 3em, repeat(8, 1fr), 3em;
-  grid-template-rows: 3em, repeat(8, 1fr), 3em;
+  width: 90vh;
+  height: 90vh;
+  margin: 0 auto;
+  /*grid-template-columns: 3em, repeat(8, 8vh), 3em;
+  grid-template-rows: 3em, repeat(8, 8vh), 3em;*/
   grid-template-areas:
     ". topSidebar topSidebar topSidebar topSidebar topSidebar topSidebar topSidebar topSidebar ."
-    "leftSidebar board board board board board board board board rightSidebar "
-    "leftSidebar board board board board board board board board rightSidebar "
-    "leftSidebar board board board board board board board board rightSidebar "
-    "leftSidebar board board board board board board board board rightSidebar "
-    "leftSidebar board board board board board board board board rightSidebar "
-    "leftSidebar board board board board board board board board rightSidebar "
-    "leftSidebar board board board board board board board board rightSidebar "
-    "leftSidebar board board board board board board board board rightSidebar "
+    "leftSidebar a1 b1 c1 d1 e1 f1 g1 h1 rightSidebar "
+    "leftSidebar a2 b2 c2 d2 e2 f2 g2 h2 rightSidebar "
+    "leftSidebar a3 b3 c3 d3 e3 f3 g3 h3 rightSidebar "
+    "leftSidebar a4 b4 c4 d4 e4 f4 g4 h4 rightSidebar "
+    "leftSidebar a5 b5 c5 d5 e5 f5 g5 h5 rightSidebar "
+    "leftSidebar a6 b6 c6 d6 e6 f6 g6 h6 rightSidebar "
+    "leftSidebar a7 b7 c7 d7 e7 f7 g7 h7 rightSidebar "
+    "leftSidebar a8 b8 c8 d8 e8 f8 g8 h8 rightSidebar "
     ". botSidebar botSidebar botSidebar botSidebar botSidebar botSidebar botSidebar botSidebar .";
 }
 
@@ -23,18 +37,38 @@
 
 .lSidebar {
   grid-area: leftSidebar;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .tSidebar {
   grid-area: topSidebar;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .rSidebar {
   grid-area: rightSidebar;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .bSidebar {
-  grid-area: botSidebar
+  grid-area: botSidebar;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .light {
