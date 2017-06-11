@@ -1,9 +1,14 @@
 /*Here is a thing for me to work on*/
 
+body {
+  background: #666;
+}
 h1 {
   text-align: center;
   margin: 0;
-  padding: 0;
+  padding: 1vh 0;
+  font-size: 5vh;
+  height: 5vh;
 }
 
 h6 {
@@ -77,4 +82,10 @@ h6 {
 
 .dark {
   background: #111;
+}
+
+.buttons {
+  text-align: center;
+  height: 3vh;
+  padding: 0 0 2vh 0;
 }
