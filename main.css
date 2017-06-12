@@ -6,8 +6,8 @@ body {
 h1 {
   text-align: center;
   margin: 0;
-  padding: 1vh 0;
-  font-size: 5vh;
+  padding: .5vh 0;
+  /*font-size: 5vh;*/
   height: 5vh;
 }
 
@@ -18,8 +18,8 @@ h6 {
 
 .board {
   display: grid;
-  width: 90vh;
-  height: 90vh;
+  width: 85vh;
+  height: 85vh;
   margin: 0 auto;
   /*grid-template-columns: 3em, repeat(8, 8vh), 3em;
   grid-template-rows: 3em, repeat(8, 8vh), 3em;*/
@@ -88,4 +88,76 @@ h6 {
   text-align: center;
   height: 3vh;
   padding: 0 0 2vh 0;
+}
+
+.wp {
+  background: url('./images/wp.png') center/contain;
+  width: 100%;
+  height: 100%;
+}
+
+.wr {
+  background: url('./images/wr.png') center/contain;
+  width: 100%;
+  height: 100%;
+}
+
+.wn {
+  background: url('./images/wn.png') center/contain;
+  width: 100%;
+  height: 100%;
+}
+
+.wb {
+  background: url('./images/wb.png') center/contain;
+  width: 100%;
+  height: 100%;
+}
+
+.wk {
+  background: url('./images/wk.png') center/contain;
+  width: 100%;
+  height: 100%;
+}
+
+.wq {
+  background: url('./images/wq.png') center/contain;
+  width: 100%;
+  height: 100%;
+}
+
+.bp {
+  background: url('./images/bp.png') center/contain;
+  width: 100%;
+  height: 100%;
+}
+
+.br {
+  background: url('./images/br.png') center/contain;
+  width: 100%;
+  height: 100%;
+}
+
+.bn {
+  background: url('./images/bn.png') center/contain;
+  width: 100%;
+  height: 100%;
+}
+
+.bb {
+  background: url('images/bb.png') center/contain no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+.bk {
+  background: url('images/bk.png') center/contain;
+  width: 100%;
+  height: 100%;
+}
+
+.bq {
+  background: url('./images/bq.png') center/contain;
+  width: 100%;
+  height: 100%;
 }

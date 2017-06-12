@@ -17,6 +17,26 @@
 // let bp = './images/bp.png', br = './images/br.png', bn = './images/bn.png';
 // let bb = './images/bb.png', bk = './images/bk.png', bq = './images/bq.png';
 
+// Catalan opening: closed, moves:
+//  - d2 d4 wp
+//  - g8 f6 bn
+//  - c2 c4 wp
+//  - e7 e6 bp
+//  - g2 g3 wp
+//  - d7 d5 bp
+//  - f1 g2 wb
+//  - f8 e7 bb
+//  - g1 f3 wn
+
+var move = 0;
+var stepBack = document.getElementById("stepback"), stepForward = document.getElementById('stepforw');
+var rewind = document.getElementById('rewind'), fastforward = document.getElementById('ff');
+stepForward.addEventListener('click', catalan);
+stepBack.addEventListener('click', catalan);
+rewind.addEventListener('click', catalan);
+fastforward.addEventListener('click', catalan);
+
+
 function genBoard() {
   // Create 64 divs, separated into classes of light and dark, and rows and columns
   // Will use grid to style.
@@ -59,13 +79,13 @@ function genSidebar(isRow) {
   // which columns map to which letters.
   // if isRow is true, create with numbers, if false, create with letters
   // return the document element, but do not attach it to the page.
-
   let newSidebar = document.createElement('div');
 
   if (isRow) {
     var vals = ["1", "2", "3", "4", "5", "6", "7", "8"];
   } else {
-    var vals = ["h", "g", "f", "e", "d", "c", "b", "a"];
+    // var vals = ["h", "g", "f", "e", "d", "c", "b", "a"];
+    var vals = ["a", "b", "c", "d", "e", "f", "g", "h"];
   }
 
   for (let i = 0; i < vals.length ; i++) {
@@ -85,30 +105,151 @@ function placePieces() {
         ['bq', 'd8'], ['bp', 'a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7']];
   for (let i = 0 ; i < startingPieces.length ; i++) {
     for (let j = 1 ; j < startingPieces[i].length ; j++) {
-      // let loc = String.fromCharCode(j).toLowerCase() + i;
-      movePieces("", startingPieces[i][j], startingPieces[i][0]);
+      movePiece("", startingPieces[i][j], startingPieces[i][0]);
     }
   }
 }
 
-function movePieces(start, finish, piece) {
+function movePiece(start, finish, piece) {
   // this function will find the piece on the start tile, and move it
   // to the finish tile.
   // If start is "" then just place a piece on the finish tile.
   if (start !== "") {
     // remove piece from class on start tile
     let startTile = document.getElementById(start);
-    let classes = startTile.className;
-    let pos = classes.indexOf(piece);
-    if (pos >= 0 ) {
-      classes = classes.slice(pos-1);
-    }
-    startTile.className = classes;
+    startTile.removeChild(startTile.firstChild);
   }
   // Add piece class to finish tile
   let endTile = document.getElementById(finish);
-  endTile.className += " " + piece;
+  let newPiece = document.createElement('div');
+  newPiece.className = piece;
+  endTile.appendChild(newPiece);
+}
 
+function catalan(event) {
+  console.log(event.target.value);
+  var situation = event.target.value;
+  switch (situation) {
+    case "start":
+      console.log("reset to 0 moves");
+      for (let i = move; i >= 0 ; i--) {
+        catMoveB();
+      }
+      break;
+    case "back":
+      console.log("move back 1 move");
+      catMoveB();
+      break;
+    case "forw":
+      console.log("move forward 1 move");
+      catMoveF();
+      break;
+    case "end":
+      console.log("skip forward to the end");
+      for (let i = move; i <= 8 ; i++) {
+        catMoveF();
+      }
+      break;
+    default:
+      break;
+  }
+}
+
+// Catalan opening: closed, moves:
+//  - d2 d4 wp
+//  - g8 f6 bn
+//  - c2 c4 wp
+//  - e7 e6 bp
+//  - g2 g3 wp
+//  - d7 d5 bp
+//  - f1 g2 wb
+//  - f8 e7 bb
+//  - g1 f3 wn
+
+function catMoveF() {
+  switch (move) {
+    case 0:
+      movePiece('d2', 'd4', 'wp');
+      move += 1;
+      break;
+    case 1:
+      movePiece('g8', 'f6', 'bn');
+      move += 1;
+      break;
+    case 2:
+      movePiece('c2', 'c4', 'wp');
+      move += 1;
+      break;
+    case 3:
+      movePiece('e7', 'e6', 'bp');
+      move += 1;
+      break;
+    case 4:
+      movePiece('g2', 'g3', 'wp');
+      move += 1;
+      break;
+    case 5:
+      movePiece('d7', 'd5', 'bp');
+      move += 1;
+      break;
+    case 6:
+      movePiece('f1', 'g2', 'wb');
+      move += 1;
+      break;
+    case 7:
+      movePiece('f8', 'e7', 'bb');
+      move += 1;
+      break;
+    case 8:
+      movePiece('g1', 'f3', 'wn');
+      move += 1;
+    default:
+      console.log('movement out of range: ', move);
+      break;
+  }
+}
+
+function catMoveB() {
+  switch (move) {
+    case 1:
+      movePiece('d4', 'd2', 'wp');
+      move -= 1;
+      break;
+    case 2:
+      movePiece('f6', 'g8', 'bn');
+      move -= 1;
+      break;
+    case 3:
+      movePiece('c4', 'c2', 'wp');
+      move -= 1;
+      break;
+    case 4:
+      movePiece('e6', 'e7', 'bp');
+      move -= 1;
+      break;
+    case 5:
+      movePiece('g3', 'g2', 'wp');
+      move -= 1;
+      break;
+    case 6:
+      movePiece('d5', 'd7', 'bp');
+      move -= 1;
+      break;
+    case 7:
+      movePiece('g2', 'f1', 'wb');
+      move -= 1;
+      break;
+    case 8:
+      movePiece('e7', 'f8', 'bb');
+      move -= 1;
+      break;
+    case 9:
+      movePiece('f3', 'g1', 'wn');
+      move -= 1;
+    default:
+      console.log('movement out of range: ', move);
+      break;
+  }
 }
 
 genBoard();
