@@ -155,16 +155,8 @@ function catalan(event) {
   }
 }
 
-// Catalan opening: closed, moves:
-//  - d2 d4 wp
-//  - g8 f6 bn
-//  - c2 c4 wp
-//  - e7 e6 bp
-//  - g2 g3 wp
-//  - d7 d5 bp
-//  - f1 g2 wb
-//  - f8 e7 bb
-//  - g1 f3 wn
+// Performs the next move in the sequence, B performs the steps in reverse.
+// Both use the move variable to track where in the sequence they are.
 
 function catMoveF() {
   switch (move) {

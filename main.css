@@ -47,6 +47,7 @@ h6 {
   width: 90%;
   justify-content: space-around;
   align-items: center;
+  color: white;
 }
 
 .tSidebar {
@@ -56,6 +57,7 @@ h6 {
   width: 100%;
   justify-content: space-around;
   align-items: center;
+  color: white;
 }
 
 .rSidebar {
@@ -65,6 +67,7 @@ h6 {
   width: 90%;
   justify-content: space-around;
   align-items: center;
+  color: white;
 }
 
 .bSidebar {
@@ -74,6 +77,7 @@ h6 {
   width: 100%;
   justify-content: space-around;
   align-items: center;
+  color: white;
 }
 
 .light {
