@@ -28,13 +28,15 @@
 //  - f8 e7 bb
 //  - g1 f3 wn
 
-var move = 0;
+var move = 0, timerId = 0;
 var stepBack = document.getElementById("stepback"), stepForward = document.getElementById('stepforw');
 var rewind = document.getElementById('rewind'), fastforward = document.getElementById('ff');
+var pp = document.getElementById('play');
 stepForward.addEventListener('click', catalan);
 stepBack.addEventListener('click', catalan);
 rewind.addEventListener('click', catalan);
 fastforward.addEventListener('click', catalan);
+pp.addEventListener('click', play);
 
 
 function genBoard() {
@@ -110,20 +112,46 @@ function placePieces() {
   }
 }
 
+function clearHighlight() {
+  // clean out highlights of the previous squares
+  let highlight = document.getElementsByClassName('high');
+  console.log(highlight);
+  for (let i = 0; i < highlight.length; i++) {
+    console.log(highlight[i].className);
+    highlight[i].className = highlight[i].className.slice(0, highlight[i].className.length-5);
+  }
+}
+
 function movePiece(start, finish, piece) {
   // this function will find the piece on the start tile, and move it
   // to the finish tile.
   // If start is "" then just place a piece on the finish tile.
+  // clearHighlight();
   if (start !== "") {
     // remove piece from class on start tile
     let startTile = document.getElementById(start);
     startTile.removeChild(startTile.firstChild);
+    // startTile.className += ' high';
   }
   // Add piece class to finish tile
   let endTile = document.getElementById(finish);
   let newPiece = document.createElement('div');
   newPiece.className = piece;
   endTile.appendChild(newPiece);
+  // endTile.className += ' high';
+}
+
+function play(event) {
+  // console.log('play pressed');
+  if ( timerId ) {
+    // console.log('clear timer');
+    clearInterval(timerId);
+    timerId = 0;
+  } else {
+    // console.log('start timer');
+    catMoveF();
+    timerId = setInterval(catMoveF, 2500);
+  }
 }
 
 function catalan(event) {
@@ -246,3 +274,4 @@ function catMoveB() {
 
 genBoard();
 placePieces();
+// clearHighlight();

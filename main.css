@@ -2,7 +2,9 @@
 
 body {
   background: #666;
+  box-sizing: border-box;
 }
+
 h1 {
   text-align: center;
   margin: 0;
@@ -81,11 +83,19 @@ h6 {
 }
 
 .light {
-  background: #EEE;
+  background: #EEEEEE;
+  padding: 4px;
 }
 
 .dark {
-  background: #111;
+  background: #111111;
+  padding: 4px;
+}
+
+.high {
+  /*box-shadow: 0 0 4px 4px #FCE94F;*/
+  padding: 0;
+  border: 4px groove #FCE94F;
 }
 
 .buttons {
